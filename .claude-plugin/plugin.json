@@ -1,0 +1,17 @@
+{
+  "name": "okrapdf",
+  "description": "Use OkraPDF as an interactive PDF panel with a local selection bridge, PDF Q&A, and structured extraction.",
+  "version": "0.1.0",
+  "author": {
+    "name": "OkraPDF"
+  },
+  "homepage": "https://okrapdf.com",
+  "repository": "https://github.com/okrapdf/skills",
+  "license": "MIT",
+  "keywords": [
+    "okrapdf",
+    "pdf",
+    "document-intelligence",
+    "agent-skills"
+  ]
+}

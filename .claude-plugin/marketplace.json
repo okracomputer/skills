@@ -1,0 +1,24 @@
+{
+  "name": "okrapdf",
+  "owner": {
+    "name": "OkraPDF"
+  },
+  "description": "OkraPDF plugins for agent IDEs",
+  "plugins": [
+    {
+      "name": "okrapdf",
+      "source": "./",
+      "description": "Open PDFs in an IDE browser pane, select page regions, and run OkraPDF Q&A or extraction from the active selection.",
+      "homepage": "https://okrapdf.com",
+      "repository": "https://github.com/okrapdf/skills",
+      "license": "MIT",
+      "category": "document-intelligence",
+      "tags": [
+        "okrapdf",
+        "pdf",
+        "codex",
+        "extraction"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "okrapdf",
+  "version": "0.1.0",
+  "description": "Use OkraPDF as a Codex-native interactive PDF panel with a local selection bridge, PDF Q&A, and structured extraction.",
+  "author": {
+    "name": "OkraPDF",
+    "url": "https://okrapdf.com"
+  },
+  "homepage": "https://okrapdf.com",
+  "repository": "https://github.com/okrapdf/skills",
+  "license": "MIT",
+  "keywords": [
+    "okrapdf",
+    "pdf",
+    "codex",
+    "agent-skills",
+    "document-intelligence",
+    "interactive"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "interface": {
+    "displayName": "OkraPDF",
+    "shortDescription": "Interactive PDF panel for Codex",
+    "longDescription": "Open PDFs in Codex's browser pane, select a page region, and let Codex read the active selection through the okra CLI bridge for Q&A and structured extraction.",
+    "developerName": "OkraPDF",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://okrapdf.com",
+    "privacyPolicyURL": "https://okrapdf.com/privacy",
+    "termsOfServiceURL": "https://okrapdf.com/terms",
+    "defaultPrompt": [
+      "Open this PDF in the OkraPDF Codex panel and answer questions about my selection",
+      "Extract the selected PDF table as JSON"
+    ],
+    "brandColor": "#B45122",
+    "screenshots": []
+  }
+}
