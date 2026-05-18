@@ -1,0 +1,124 @@
+{
+  "pages": [
+    {
+      "page_number": 1,
+      "blocks": [
+        {
+          "label": "Page-header",
+          "value": "UNITED STATES<br>SECURITIES AND EXCHANGE COMMISSION<br>Washington, D.C. 20549",
+          "bbox": {
+            "x": 0.409,
+            "y": 0.038,
+            "w": 0.27,
+            "h": 0.033
+          }
+        },
+        {
+          "label": "Title",
+          "value": "FORM 10-K",
+          "bbox": {
+            "x": 0.447,
+            "y": 0.093,
+            "w": 0.094,
+            "h": 0.015
+          }
+        },
+        {
+          "label": "Text",
+          "value": "☒ ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE<br>SECURITIES EXCHANGE ACT OF 1934<br>For the fiscal year ended December 31, 2018",
+          "bbox": {
+            "x": 0.148,
+            "y": 0.115,
+            "w": 0.529,
+            "h": 0.758
+          }
+        },
+        {
+          "label": "Text",
+          "value": "State of Incorporation: <b>Delaware</b> I.R.S. Employer Identification No. <b>41-0417775</b>",
+          "bbox": {
+            "x": 0.199,
+            "y": 0.19,
+            "w": 0.586,
+            "h": 0.036
+          }
+        },
+        {
+          "label": "Text",
+          "value": "Principal executive offices: <b>3M Center, St. Paul, Minnesota 55144</b>",
+          "bbox": {
+            "x": 0.21,
+            "y": 0.201,
+            "w": 0.442,
+            "h": 0.13
+          }
+        },
+        {
+          "label": "Text",
+          "value": "Telephone number: <b>(651) 733-1110</b>",
+          "bbox": {
+            "x": 0.221,
+            "y": 0.212,
+            "w": 0.331,
+            "h": 0.219
+          }
+        },
+        {
+          "label": "Section-header",
+          "value": "SECURITIES REGISTERED PURSUANT TO SECTION 12(b) OF THE ACT:",
+          "bbox": {
+            "x": 0.241,
+            "y": 0.232,
+            "w": 0.439,
+            "h": 0.072
+          }
+        },
+        {
+          "label": "Text",
+          "value": "Securities registered pursuant to section 12(g) of the Act: None",
+          "bbox": {
+            "x": 0.37,
+            "y": 0.361,
+            "w": 0.234,
+            "h": 0.019
+          }
+        }
+      ]
+    },
+    {
+      "page_number": 2,
+      "blocks": [
+        {
+          "label": "Page-header",
+          "value": "Table of Contents",
+          "bbox": {
+            "x": 0.093,
+            "y": 0.026,
+            "w": 0.101,
+            "h": 0.01
+          }
+        },
+        {
+          "label": "Title",
+          "value": "**3M COMPANY** **FORM 10-K** **For the Year Ended December 31, 2018**",
+          "bbox": {
+            "x": 0.383,
+            "y": 0.068,
+            "w": 0.216,
+            "h": 0.033
+          }
+        },
+        {
+          "label": "Page-footer",
+          "value": "2",
+          "bbox": {
+            "x": 0.482,
+            "y": 0.691,
+            "w": 0.008,
+            "h": 0.01
+          }
+        }
+      ]
+    }
+  ]
+}
