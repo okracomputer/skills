@@ -1,107 +1,80 @@
-# OkraPDF CLI Reference
+# okrapdf CLI reference
 
-Use JSON output for agent workflows.
+All commands are `npx okrapdf@latest <command>`. Use `--json` in agent workflows.
 
-## Auth
-
-```bash
-okra auth status
-okra auth login
-```
-
-## Upload
+## Dashboard
 
 ```bash
-okra upload ./report.pdf --json
+npx okrapdf@latest [file.pdf]
 ```
 
-Returns a document id such as `doc-...`.
+| Flag | Effect |
+| --- | --- |
+| `--background` | Start the server, print the URL, and return. It stops after 30 idle minutes. |
+| `--json` | Print `{"url","documentId","reused","pid"}`. |
+| `--port <n>` | First port to try. The default is 7373, and it moves up if the port is in use. |
+| `--no-open` | Do not open a browser. |
 
-## Codex Panel Bridge
+With a dashboard running, this command adds the file to it and sets `reused` to `true`.
+
+## Models
 
 ```bash
-okra bridge serve
+npx okrapdf@latest model --json
 ```
 
-The bridge binds to `127.0.0.1:7373`, serves the local viewer, proxies document page/status data with the CLI API key, and exposes the active PDF selection.
+| Field | Meaning |
+| --- | --- |
+| `models[].id` | The value for `--model`. |
+| `models[].kind` | `builtin`, `local`, `byok`, or `custom`. |
+| `models[].vision` | `true`, `false`, or `null` when the server does not report it. |
+| `local[]` | Each server with `state` (`running`, `installed`, `absent`) and a `hint`. |
+| `byok[]` | Each provider with `configured` and `keySource` (`env`, `saved`, `session`). No key value appears here. |
+| `host` | CPU, memory, and whether `uv` exists. |
+| `recommendations[]` | Models that fit this computer, with the `ollama pull` command. |
 
-Open:
+## Parse
 
-```text
-http://127.0.0.1:7373/viewer?doc=<docId>
+```bash
+npx okrapdf@latest parse <file.pdf> [--model <id>] [--pages 1-3,7] [--json] [--output <file>]
 ```
 
-Drag on a PDF page. The page will show "Selection synced to Codex bridge" when the bbox is posted.
+The default model is `builtin/text-layer`. The default output is markdown. The command exits non-zero if a page fails.
+
+## Bench
+
+```bash
+npx okrapdf@latest bench --model <id> [--full] [--json]
+```
+
+This command parses ParseBench pages, then runs the published `parse-bench` evaluator through `uvx`. The default is the 12-page test set. `--full` is the 2,000-page dataset. Files go to `~/.cache/okrapdf/parsebench/`.
 
 ## Selection
 
 ```bash
-okra select --json
+npx okrapdf@latest context
 ```
 
-Returns:
+Prints `{"selection":{"documentId","runId","blockId","page","label","bbox","text","selectedAt"}}`, or `{"selection":null}`.
 
-```json
-{
-  "docId": "doc-...",
-  "page": 1,
-  "nodeId": "local-viewer-p1",
-  "bbox": { "x": 0.1, "y": 0.2, "width": 0.3, "height": 0.1 },
-  "selectedAt": "2026-05-18T12:00:00.000Z",
-  "source": "http://127.0.0.1:7373"
-}
-```
-
-## Crop The Current Selection
-
-When the user highlights a region, crop the actual pixels before answering:
+## Server
 
 ```bash
-node <skill-dir>/scripts/crop-selection.mjs --out /tmp/okra-selection.png
+npx okrapdf@latest status --json
+npx okrapdf@latest stop
 ```
 
-Then inspect the crop image and use that as the source of truth.
+## HTTP routes
 
-The helper requires ImageMagick's `magick` command. If it is unavailable, manually fetch the page image and crop with any available image tool:
+The page uses these routes, and an agent can use them too. Each route is on the URL from `status`.
 
-```bash
-curl -fsS -o /tmp/okra-page.png \
-  "http://127.0.0.1:7373/viewer/doc/<docId>/pages/<page>/image"
-```
+| Route | Purpose |
+| --- | --- |
+| `GET /api/state` | Documents, runs, bench runs, and the selection. |
+| `GET /api/events` | Server-sent events for changes to that state. |
+| `GET /api/models` | The same data as `model --json`. |
+| `POST /api/runs` | Start a run: `{"documentId","modelId","pages":[1,2]}`. Omit `pages` for all pages. |
+| `GET /api/runs/:id` | One run. |
+| `GET /api/runs/:id/export?format=markdown` | Markdown or JSON. |
 
-Convert normalized bbox values to pixels using the page image width and height:
-
-```text
-x_px = bbox.x * image_width
-y_px = bbox.y * image_height
-w_px = bbox.width * image_width
-h_px = bbox.height * image_height
-```
-
-## Ask About The Current Selection
-
-```bash
-okra ask "What is in the selected region?" --selection --json
-```
-
-## Extract From The Current Selection
-
-```bash
-okra extract --selection --schema ./schema.json --json
-```
-
-Inline schema is allowed:
-
-```bash
-okra extract --selection \
-  --schema '{"type":"object","properties":{"total":{"type":"string"}}}' \
-  --json
-```
-
-## Hosted Embed Fallback
-
-```text
-https://app.okrapdf.com/documents?document=<docId>&view=review&embed=codex
-```
-
-Use the local viewer when auth in the Codex browser is awkward. Use the hosted embed when the user is already signed in.
+The server refuses a request with a foreign `Host` or `Origin`.

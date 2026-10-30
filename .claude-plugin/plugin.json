@@ -1,7 +1,7 @@
 {
   "name": "okrapdf",
-  "description": "Use OkraPDF as an interactive PDF panel with a local selection bridge, PDF Q&A, and structured extraction.",
-  "version": "0.1.0",
+  "description": "Open a local PDF parser dashboard with hover source mapping, local models, your own API keys, and ParseBench scoring.",
+  "version": "0.2.0",
   "author": {
     "name": "OkraPDF"
   },

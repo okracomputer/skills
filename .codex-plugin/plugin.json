@@ -1,7 +1,7 @@
 {
   "name": "okrapdf",
-  "version": "0.1.0",
-  "description": "Use OkraPDF as a Codex-native interactive PDF panel with a local selection bridge, PDF Q&A, and structured extraction.",
+  "version": "0.2.0",
+  "description": "Open a local PDF parser dashboard with hover source mapping, local models, your own API keys, and ParseBench scoring.",
   "author": {
     "name": "OkraPDF",
     "url": "https://okrapdf.com"
@@ -21,8 +21,8 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "OkraPDF",
-    "shortDescription": "Interactive PDF panel for Codex",
-    "longDescription": "Open PDFs in Codex's browser pane, select a page region, and let Codex read the active selection through the okra CLI bridge for Q&A and structured extraction.",
+    "shortDescription": "Local PDF parser dashboard",
+    "longDescription": "Run npx okrapdf to open a PDF beside its parsed blocks on localhost, hover to map a block to its source, parse with local models or your own keys, and score models with ParseBench.",
     "developerName": "OkraPDF",
     "category": "Coding",
     "capabilities": [
@@ -34,8 +34,9 @@
     "privacyPolicyURL": "https://okrapdf.com/privacy",
     "termsOfServiceURL": "https://okrapdf.com/terms",
     "defaultPrompt": [
-      "Open this PDF in the OkraPDF Codex panel and answer questions about my selection",
-      "Extract the selected PDF table as JSON"
+      "Open this PDF in the okraPDF dashboard",
+      "Show me which local models can parse this PDF",
+      "Score this model with ParseBench"
     ],
     "brandColor": "#B45122",
     "screenshots": []

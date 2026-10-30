@@ -6,7 +6,7 @@
       "headers": {
         "Authorization": "Bearer ${OKRA_API_KEY}"
       },
-      "note": "Remote OkraPDF MCP server for document upload, read, Q&A, and extraction. The interactive Codex panel selection flow still uses the local okra bridge."
+      "note": "Remote okraPDF MCP server for document upload, read, Q&A, and extraction. The local dashboard runs from npx okrapdf and does not use this server."
     }
   }
 }
