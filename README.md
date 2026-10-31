@@ -8,6 +8,10 @@ Run this to open a local PDF parser dashboard. It needs no account:
 npx okrapdf report.pdf
 ```
 
+![okraPDF dashboard: a hover on a PDF box finds its parsed block, and a hover on a block finds its box](assets/okrapdf-dashboard.gif)
+
+<sub>Netflix Q3 2025 shareholder letter, [Form 8-K, Exhibit 99.1](https://www.sec.gov/Archives/edgar/data/1065280/000106528025000404/ex991_q325.htm), parsed with Gemini 3 Flash. okraPDF has no connection with Netflix.</sub>
+
 This repo is also packaged as an okraPDF Codex plugin:
 
 - `npx skills add okrapdf/skills --skill okrapdf` for the skill-first install.

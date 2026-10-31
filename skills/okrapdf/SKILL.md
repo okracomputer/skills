@@ -10,6 +10,8 @@ user-invocable: true
 
 # okraPDF dashboard
 
+![okraPDF dashboard: a hover on a PDF box finds its parsed block](https://raw.githubusercontent.com/okracomputer/skills/main/assets/okrapdf-dashboard.gif)
+
 Run `npx okrapdf@latest <command>`. It needs Node.js 20.19 or later and no account. For command details, see `references/cli-reference.md`.
 
 The dashboard is a local web page, not a hosted service. The server binds to `127.0.0.1`. A document leaves the computer only when the person runs a cloud model, and then only the pages that they parse go to that provider.
