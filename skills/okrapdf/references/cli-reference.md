@@ -6,6 +6,7 @@ All commands are `npx okrapdf@latest <command>`. Use `--json` in agent workflows
 
 ```bash
 npx okrapdf@latest [file.pdf]
+npx okrapdf@latest dashboard [file.pdf]
 ```
 
 | Flag | Effect |
@@ -28,6 +29,7 @@ npx okrapdf@latest model --json
 | `models[].id` | The value for `--model`. |
 | `models[].kind` | `builtin`, `local`, `byok`, or `custom`. |
 | `models[].vision` | `true`, `false`, or `null` when the server does not report it. |
+| `models[].creditsPerPage` | The page price on a provider that bills in credits, such as LlamaParse. |
 | `local[]` | Each server with `state` (`running`, `installed`, `absent`) and a `hint`. |
 | `byok[]` | Each provider with `configured` and `keySource` (`env`, `saved`, `session`). No key value appears here. |
 | `host` | CPU, memory, and whether `uv` exists. |
@@ -41,13 +43,15 @@ npx okrapdf@latest parse <file.pdf> [--model <id>] [--pages 1-3,7] [--json] [--o
 
 The default model is `builtin/text-layer`. The default output is markdown. The command exits non-zero if a page fails.
 
+A LlamaParse run (`llamaparse/agentic`, `llamaparse/cost_effective`, `llamaparse/agentic_plus`) needs `LLAMA_CLOUD_API_KEY`. Its pages have `credits`, and its blocks have `confidence` and `concerns`.
+
 ## Bench
 
 ```bash
 npx okrapdf@latest bench --model <id> [--full] [--json]
 ```
 
-This command parses ParseBench pages, then runs the published `parse-bench` evaluator through `uvx`. The default is the 12-page test set. `--full` is the 2,000-page dataset. Files go to `~/.cache/okrapdf/parsebench/`.
+This command parses ParseBench pages, then runs the published `parse-bench` evaluator through `uvx`. It refuses a `llamaparse/` id. The default is the 12-page test set. `--full` is the 2,000-page dataset. Files go to `~/.cache/okrapdf/parsebench/`.
 
 ## Selection
 
@@ -76,5 +80,6 @@ The page uses these routes, and an agent can use them too. Each route is on the 
 | `POST /api/runs` | Start a run: `{"documentId","modelId","pages":[1,2]}`. Omit `pages` for all pages. |
 | `GET /api/runs/:id` | One run. |
 | `GET /api/runs/:id/export?format=markdown` | Markdown or JSON. |
+| `DELETE /api/selection` | Clear the selection. |
 
 The server refuses a request with a foreign `Host` or `Origin`.

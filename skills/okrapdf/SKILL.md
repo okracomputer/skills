@@ -1,6 +1,6 @@
 ---
 name: okrapdf
-description: Open a local PDF parser dashboard with `npx okrapdf`. It shows the PDF and the parsed output side by side with hover source mapping, finds local models (Ollama, LM Studio, vLLM, llama.cpp, MLX, Jan), takes the user's own API keys, and scores models with ParseBench. Use when the user wants to parse, OCR, or read a PDF, see where a value came from on the page, compare parsers or models, try a local vision model on documents, or run ParseBench.
+description: Open a local PDF parser dashboard with `npx okrapdf`. It shows the PDF and the parsed output side by side with hover source mapping, finds local models (Ollama, LM Studio, vLLM, llama.cpp, MLX, Jan), runs LlamaParse or other parsers with the user's own API keys, and scores models with ParseBench. Use when the user wants to parse, OCR, or read a PDF, see where a value came from on the page, compare parsers or models, try a local vision model on documents, or run ParseBench.
 metadata:
   author: okraPDF
   source: https://github.com/okrapdf/skills
@@ -28,7 +28,7 @@ The dashboard is a local web page, not a hosted service. The server binds to `12
 
 2. Confirm that the URL answers 200, then give the person the URL. If the agent has a browser pane, open the URL there.
 
-3. Tell the person what they see. The text layer has parsed already, with no model. The PDF is on the left, the blocks are on the right, and a hover on either side highlights the other.
+3. Tell the person what they see. The text layer has parsed already, with no model. The PDF is on the left, and the parsed output is on the right, with Preview, Blocks, Markdown, JSON, and Raw views. A hover on either side highlights the other, and the two panes scroll together. In a narrow browser pane, a Source and Parsed switch replaces the split.
 
 4. Read what models this computer has before you suggest one:
 
@@ -45,6 +45,8 @@ The dashboard is a local web page, not a hosted service. The server binds to `12
    ```
 
    If `selection` is `null`, ask them to click the box. Do not ask them for coordinates.
+
+With no file, `npx okrapdf@latest` opens a drop zone with a sample document. `npx okrapdf@latest dashboard report.pdf` is the same command by name.
 
 ## Parse in the terminal
 
@@ -66,6 +68,7 @@ With no `--model`, it reads the text layer. A scan returns no text from the text
 | Text PDF, and you need the text only | `builtin/text-layer` |
 | Private document, with a local server running | A local id from `model --json` with `vision` not `false` |
 | Dense tables, and cloud is acceptable | `gemini/gemini-3-flash-preview` |
+| The person has a LlamaCloud key | `llamaparse/agentic`, `llamaparse/cost_effective`, or `llamaparse/agentic_plus` |
 | Scan, and no local vision model | Ask for a key, or show a `recommendations[].command` from `model --json` |
 
 `model --json` also reports each local server's `state`:
@@ -76,7 +79,9 @@ With no `--model`, it reads the text layer. A scan returns no text from the text
 
 Ask before you run `ollama pull`. It downloads gigabytes.
 
-Keys come from `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, and `NVIDIA_API_KEY`, or from the Models tab in the dashboard. Never ask the person to paste a key into the chat. Send them to the Models tab.
+LlamaParse tiers bill the person's LlamaCloud credits, at 10, 3, and 45 credits per page in the order above. Tell them the page count before a long run. A LlamaParse block also has `confidence` and `concerns`, and a page has `credits`.
+
+Keys come from `LLAMA_CLOUD_API_KEY`, `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, and `NVIDIA_API_KEY`, or from the Models tab in the dashboard. Never ask the person to paste a key into the chat. Send them to the Models tab.
 
 ## ParseBench
 
@@ -86,6 +91,8 @@ Every model run uses the ParseBench `parse_with_layout` prompts word for word. T
 npx okrapdf@latest bench --model ollama/qwen3-vl:4b --json
 npx okrapdf@latest bench --model gemini/gemini-3-flash-preview --full
 ```
+
+The bench takes prompt-based models, so it refuses a `llamaparse/` id. LlamaParse has published scores in the Bench tab.
 
 The result has five scores: tables, charts, content faithfulness, semantic formatting, and visual grounding. The person can run the same thing from the Bench tab and open each page to see what the model did.
 
