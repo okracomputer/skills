@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "okrapdf": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "okrapdf@^0.17.0",
+        "mcp"
+      ]
+    }
+  }
+}

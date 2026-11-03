@@ -3,7 +3,7 @@ name: okrapdf
 description: Open a local PDF parser dashboard with `npx okrapdf`. It shows the PDF and the parsed output side by side with hover source mapping, finds local models (Ollama, LM Studio, vLLM, llama.cpp, MLX, Jan), runs LlamaParse or other parsers with the user's own API keys, and scores models with ParseBench. Use when the user wants to parse, OCR, or read a PDF, see where a value came from on the page, compare parsers or models, try a local vision model on documents, or run ParseBench.
 metadata:
   author: okraPDF
-  source: https://github.com/okrapdf/skills
+  source: https://github.com/okracomputer/skills
 allowed-tools: Bash(npx okrapdf *), Bash(npx okrapdf@latest *), Bash(curl -s http://127.0.0.1*)
 user-invocable: true
 ---
@@ -15,6 +15,20 @@ user-invocable: true
 Run `npx okrapdf@latest <command>`. It needs Node.js 20.19 or later and no account. For command details, see `references/cli-reference.md`.
 
 The dashboard is a local web page, not a hosted service. The server binds to `127.0.0.1`. A document leaves the computer only when the person runs a cloud model, and then only the pages that they parse go to that provider.
+
+## MCP tools
+
+When this skill comes with the okraPDF plugin, the host also starts `npx okrapdf mcp`, a local MCP server. Use its tools before the shell commands below. They run the same parser on this computer:
+
+| Tool | Use it to |
+| --- | --- |
+| `parse_pdf` | Read a PDF. Each block has `page` and `bbox`. The default model is the free, offline text layer. |
+| `find_in_pdf` | Check a quote or a number against the PDF. Case and thousands separators do not matter. |
+| `list_models` | Pick a model for a scan. Never guess a model id. |
+| `open_dashboard` | Show the person the PDF beside its blocks. |
+| `get_selected_block` | Read the block the person clicked, when they say "this table". |
+
+Pass absolute paths. When you state a fact from a PDF, give its page and block id, so the person can check it.
 
 ## The loop
 
