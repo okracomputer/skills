@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "okrapdf": {
+    "okrapdf-parser": {
       "type": "stdio",
       "command": "npx",
       "args": [
