@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "okrapdf",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Parse PDFs on your own computer: an offline MCP server with page-and-box citations for every block, a local dashboard with hover source mapping, local models, your own API keys, and ParseBench scoring.",
   "author": {
     "name": "okraPDF",
