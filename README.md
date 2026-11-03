@@ -23,7 +23,9 @@ This repo is also an okraPDF plugin. It adds the `okrapdf` skill and a local MCP
 | Cursor, VS Code, Kiro | Load this folder as an [Agent Plugin](https://github.com/agentplugins/agent-plugins-spec) (`plugin.json` + `mcp.json`) |
 | Any MCP client | `{"mcpServers": {"okrapdf": {"command": "npx", "args": ["-y", "okrapdf@^0.17.0", "mcp"]}}}` |
 
-Tools: `parse_pdf`, `find_in_pdf`, `list_models`, `open_dashboard`, `get_selected_block`.
+Tools: `parse_pdf`, `find_in_pdf`, `list_models`, `open_pdf_viewer`, `open_dashboard`, `get_selected_block`.
+
+In Codex and ChatGPT desktop the plugin also adds the **okraPDF viewer**: open a PDF in a thread with **Open in → okraPDF**, or add an okraPDF tab from **More tools**. Click a block to attach it to the chat with its page and box.
 
 ## Skills
 

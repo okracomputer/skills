@@ -1,6 +1,6 @@
 {
   "name": "okrapdf",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Parse PDFs on your own computer: an offline MCP server with page-and-box citations for every block, a local dashboard with hover source mapping, local models, your own API keys, and ParseBench scoring.",
   "author": {
     "name": "okraPDF",
@@ -24,7 +24,7 @@
   "interface": {
     "displayName": "okraPDF",
     "shortDescription": "Parse PDFs offline, with page-and-box citations",
-    "longDescription": "Parse a PDF on your own computer and get every block with its page and box, so each answer cites its source. The text layer is free and offline; local models (Ollama, LM Studio) and your own API keys handle scans. Open the dashboard to see the PDF beside its blocks, and score models with ParseBench. No account.",
+    "longDescription": "Parse a PDF on your own computer and open it in the okraPDF viewer: each page with its blocks drawn on it. Click a block to attach it to the chat with its page and box, so each answer cites its source. Open any PDF in a thread with Open in → okraPDF, or add an okraPDF tab beside the thread. The text layer is free and offline; local models (Ollama, LM Studio) and your own API keys handle scans. No account.",
     "developerName": "okraPDF",
     "category": "Coding",
     "capabilities": [
@@ -35,11 +35,13 @@
     "privacyPolicyURL": "https://okrapdf.com/privacy",
     "termsOfServiceURL": "https://okrapdf.com/terms",
     "defaultPrompt": [
+      "Open this PDF in the okraPDF viewer",
       "Find the total revenue in this PDF and cite the page",
-      "Parse this PDF and show me the tables",
-      "Open this PDF in the okraPDF dashboard"
+      "Parse this PDF and show me the tables"
     ],
     "brandColor": "#B45122",
-    "screenshots": []
+    "screenshots": [],
+    "logo": "./assets/okra-mark.png",
+    "composerIcon": "./assets/okra-mark.png"
   }
 }

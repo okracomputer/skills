@@ -25,7 +25,8 @@ When this skill comes with the okraPDF plugin, the host also starts `npx okrapdf
 | `parse_pdf` | Read a PDF. Each block has `page` and `bbox`. The default model is the free, offline text layer. |
 | `find_in_pdf` | Check a quote or a number against the PDF. Case and thousands separators do not matter. |
 | `list_models` | Pick a model for a scan. Never guess a model id. |
-| `open_dashboard` | Show the person the PDF beside its blocks. |
+| `open_pdf_viewer` | Open the PDF in the okraPDF viewer inside this app. A block that the person clicks there reaches you as context, with its page, block id, and box. |
+| `open_dashboard` | Show the same view in the browser instead. |
 | `get_selected_block` | Read the block the person clicked, when they say "this table". |
 
 Pass absolute paths. When you state a fact from a PDF, give its page and block id, so the person can check it.

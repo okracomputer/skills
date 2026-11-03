@@ -6,7 +6,7 @@
       "command": "npx",
       "args": [
         "-y",
-        "okrapdf@^0.17.0",
+        "okrapdf@^0.18.0",
         "mcp"
       ]
     }
