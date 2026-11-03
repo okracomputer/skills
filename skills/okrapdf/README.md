@@ -23,7 +23,7 @@ Your document stays on your computer until you choose a cloud model. Then only t
 Install the skill:
 
 ```bash
-npx skills add okrapdf/skills --skill okrapdf
+npx skills add okracomputer/skills --skill okrapdf
 ```
 
 Agents read [SKILL.md](SKILL.md). Humans can run `npx okrapdf --help`.

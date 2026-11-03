@@ -1,12 +1,13 @@
 {
   "mcpServers": {
     "okrapdf": {
-      "type": "http",
-      "url": "https://api.okrapdf.com/mcp",
-      "headers": {
-        "Authorization": "Bearer ${OKRA_API_KEY}"
-      },
-      "note": "Remote okraPDF MCP server for document upload, read, Q&A, and extraction. The local dashboard runs from npx okrapdf and does not use this server."
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "okrapdf@^0.17.0",
+        "mcp"
+      ]
     }
   }
 }

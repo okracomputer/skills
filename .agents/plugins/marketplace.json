@@ -1,7 +1,7 @@
 {
   "name": "okrapdf",
   "interface": {
-    "displayName": "OkraPDF"
+    "displayName": "okraPDF"
   },
   "plugins": [
     {
