@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "okrapdf-parser": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "okrapdf@0.18.0",
+        "mcp"
+      ]
+    }
+  }
+}
