@@ -19,9 +19,11 @@ This repo is also an okraPDF plugin. It adds the `okrapdf` skill and a local MCP
 | Host | Install |
 | --- | --- |
 | Codex and ChatGPT desktop | `codex plugin marketplace add okracomputer/skills`, then install **okraPDF** from the plugin directory |
-| Claude Code | `/plugin marketplace add okracomputer/skills`, then `/plugin install okrapdf@okrapdf` |
+| Claude Code | `/plugin marketplace add okracomputer/skills`, then `/plugin install okrapdf@okrapdf` ([`plugins/okrapdf`](plugins/okrapdf/): the `okrapdf` skill and the local server only) |
 | Cursor, VS Code, Kiro | Load this folder as an [Agent Plugin](https://github.com/agentplugins/agent-plugins-spec) (`plugin.json` + `mcp.json`) |
-| Any MCP client | `{"mcpServers": {"okrapdf": {"command": "npx", "args": ["-y", "okrapdf@^0.17.0", "mcp"]}}}` |
+| Any MCP client | `{"mcpServers": {"okrapdf": {"command": "npx", "args": ["-y", "okrapdf@0.18.1", "mcp"]}}}` |
+
+The Claude plugin in [`plugins/okrapdf`](plugins/okrapdf/) pins one exact `okrapdf` version, as Anthropic's plugin directory requires. After an `okrapdf` release, run `node scripts/build-claude-plugin.mjs <version>`, raise `version` in its `plugin.json`, and run `claude plugin validate plugins/okrapdf`.
 
 Tools: `parse_pdf`, `find_in_pdf`, `list_models`, `open_pdf_viewer`, `open_dashboard`, `get_selected_block`.
 

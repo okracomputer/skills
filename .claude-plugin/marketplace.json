@@ -7,8 +7,8 @@
   "plugins": [
     {
       "name": "okrapdf",
-      "source": "./",
-      "description": "Parse PDFs on your own computer: an offline MCP server with page-and-box citations for every block, a local dashboard with hover source mapping, local models, your own API keys, and ParseBench scoring.",
+      "source": "./plugins/okrapdf",
+      "description": "BYOK PDF Parser. Parse PDFs on your own computer with a local MCP server: every block comes back with its page and box, so each answer cites its source. The text layer is free and offline. Scans use a local model (Ollama, LM Studio) or your own API key. No account.",
       "homepage": "https://okrapdf.com",
       "repository": "https://github.com/okracomputer/skills",
       "license": "MIT",
