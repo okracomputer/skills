@@ -1,6 +1,6 @@
 ---
 name: okrapdf
-description: Open a local PDF parser dashboard with `npx okrapdf@0.18.1`. It shows the PDF and the parsed output side by side with hover source mapping, finds local models (Ollama, LM Studio, vLLM, llama.cpp, MLX, Jan), runs LlamaParse or other parsers with the user's own API keys, and scores models with ParseBench. Use when the user wants to parse, OCR, or read a PDF, see where a value came from on the page, compare parsers or models, try a local vision model on documents, or run ParseBench.
+description: Parse, OCR, or extract tables and text from a PDF on this computer, with the page and box of every block so each answer cites its source. Use when the user wants to read a PDF, OCR a scan, pull tables or numbers out of an invoice, statement, or report, check where a value came from on the page, compare parsers or local vision models (Ollama, LM Studio, vLLM, llama.cpp, MLX, Jan), run LlamaParse with their own API key, or score models with ParseBench. Text-layer parse is free and offline. `npx okrapdf@0.18.1` also opens a local dashboard with the PDF beside the parsed output.
 metadata:
   author: okraPDF
   source: https://github.com/okracomputer/skills
