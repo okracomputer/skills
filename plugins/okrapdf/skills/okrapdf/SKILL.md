@@ -4,7 +4,6 @@ description: Open a local PDF parser dashboard with `npx okrapdf@0.18.0`. It sho
 metadata:
   author: okraPDF
   source: https://github.com/okracomputer/skills
-allowed-tools: Bash(npx okrapdf@0.18.0 *), Bash(curl -s http://127.0.0.1*)
 user-invocable: true
 ---
 

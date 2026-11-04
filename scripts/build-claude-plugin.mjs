@@ -22,7 +22,8 @@ const skill = join(plugin, 'skills', 'okrapdf');
 
 const pin = (text) =>
   text
-    .replace(/^allowed-tools: .*$/m, `allowed-tools: Bash(npx okrapdf@${version} *), Bash(curl -s http://127.0.0.1*)`)
+    // The directory holds any pre-approved shell access for a reviewer, so Claude asks the person instead.
+    .replace(/^allowed-tools: .*\n/m, '')
     .replaceAll(/npx okrapdf(@latest)?(?=[\s`])/g, `npx okrapdf@${version}`)
     // The cloud CLI needs an account and downloads @okrapdf/cli at run time: not part of an offline listing.
     .replace(/\n## Cloud commands\n[\s\S]*?(?=\n## )/, '');
