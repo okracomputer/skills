@@ -1,12 +1,12 @@
 # okrapdf CLI reference
 
-All commands are `npx okrapdf@0.18.0 <command>`. Use `--json` in agent workflows.
+All commands are `npx okrapdf@0.18.1 <command>`. Use `--json` in agent workflows.
 
 ## Dashboard
 
 ```bash
-npx okrapdf@0.18.0 [file.pdf]
-npx okrapdf@0.18.0 dashboard [file.pdf]
+npx okrapdf@0.18.1 [file.pdf]
+npx okrapdf@0.18.1 dashboard [file.pdf]
 ```
 
 | Flag | Effect |
@@ -21,7 +21,7 @@ With a dashboard running, this command adds the file to it and sets `reused` to 
 ## Models
 
 ```bash
-npx okrapdf@0.18.0 model --json
+npx okrapdf@0.18.1 model --json
 ```
 
 | Field | Meaning |
@@ -38,7 +38,7 @@ npx okrapdf@0.18.0 model --json
 ## Parse
 
 ```bash
-npx okrapdf@0.18.0 parse <file.pdf> [--model <id>] [--pages 1-3,7] [--json] [--output <file>]
+npx okrapdf@0.18.1 parse <file.pdf> [--model <id>] [--pages 1-3,7] [--json] [--output <file>]
 ```
 
 The default model is `builtin/text-layer`. The default output is markdown. The command exits non-zero if a page fails.
@@ -48,7 +48,7 @@ A LlamaParse run (`llamaparse/agentic`, `llamaparse/cost_effective`, `llamaparse
 ## Bench
 
 ```bash
-npx okrapdf@0.18.0 bench --model <id> [--full] [--json]
+npx okrapdf@0.18.1 bench --model <id> [--full] [--json]
 ```
 
 This command parses ParseBench pages, then runs the published `parse-bench` evaluator through `uvx`. It refuses a `llamaparse/` id. The default is the 12-page test set. `--full` is the 2,000-page dataset. Files go to `~/.cache/okrapdf/parsebench/`.
@@ -56,7 +56,7 @@ This command parses ParseBench pages, then runs the published `parse-bench` eval
 ## Selection
 
 ```bash
-npx okrapdf@0.18.0 context
+npx okrapdf@0.18.1 context
 ```
 
 Prints `{"selection":{"documentId","runId","blockId","page","label","bbox","text","selectedAt"}}`, or `{"selection":null}`.
@@ -64,8 +64,8 @@ Prints `{"selection":{"documentId","runId","blockId","page","label","bbox","text
 ## Server
 
 ```bash
-npx okrapdf@0.18.0 status --json
-npx okrapdf@0.18.0 stop
+npx okrapdf@0.18.1 status --json
+npx okrapdf@0.18.1 stop
 ```
 
 ## HTTP routes

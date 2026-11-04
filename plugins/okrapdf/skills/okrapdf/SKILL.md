@@ -1,6 +1,6 @@
 ---
 name: okrapdf
-description: Open a local PDF parser dashboard with `npx okrapdf@0.18.0`. It shows the PDF and the parsed output side by side with hover source mapping, finds local models (Ollama, LM Studio, vLLM, llama.cpp, MLX, Jan), runs LlamaParse or other parsers with the user's own API keys, and scores models with ParseBench. Use when the user wants to parse, OCR, or read a PDF, see where a value came from on the page, compare parsers or models, try a local vision model on documents, or run ParseBench.
+description: Open a local PDF parser dashboard with `npx okrapdf@0.18.1`. It shows the PDF and the parsed output side by side with hover source mapping, finds local models (Ollama, LM Studio, vLLM, llama.cpp, MLX, Jan), runs LlamaParse or other parsers with the user's own API keys, and scores models with ParseBench. Use when the user wants to parse, OCR, or read a PDF, see where a value came from on the page, compare parsers or models, try a local vision model on documents, or run ParseBench.
 metadata:
   author: okraPDF
   source: https://github.com/okracomputer/skills
@@ -11,13 +11,13 @@ user-invocable: true
 
 ![okraPDF dashboard: a hover on a PDF box finds its parsed block](https://raw.githubusercontent.com/okracomputer/skills/main/assets/okrapdf-dashboard.gif)
 
-Run `npx okrapdf@0.18.0 <command>`. It needs Node.js 20.19 or later and no account. For command details, see `references/cli-reference.md`.
+Run `npx okrapdf@0.18.1 <command>`. It needs Node.js 20.19 or later and no account. For command details, see `references/cli-reference.md`.
 
 The dashboard is a local web page, not a hosted service. The server binds to `127.0.0.1`. A document leaves the computer only when the person runs a cloud model, and then only the pages that they parse go to that provider.
 
 ## MCP tools
 
-When this skill comes with the okraPDF plugin, the host also starts `npx okrapdf@0.18.0 mcp`, a local MCP server. Use its tools before the shell commands below. They run the same parser on this computer:
+When this skill comes with the okraPDF plugin, the host also starts `npx okrapdf@0.18.1 mcp`, a local MCP server. Use its tools before the shell commands below. They run the same parser on this computer:
 
 | Tool | Use it to |
 | --- | --- |
@@ -35,7 +35,7 @@ Pass absolute paths. When you state a fact from a PDF, give its page and block i
 1. Start the dashboard and read the URL:
 
    ```bash
-   npx okrapdf@0.18.0 report.pdf --background --json
+   npx okrapdf@0.18.1 report.pdf --background --json
    ```
 
    It prints one line such as `{"url":"http://127.0.0.1:7373/?doc=ab12cd34","documentId":"ab12cd34","reused":false,"pid":4242}`. If a dashboard is running, the command adds the file to it.
@@ -47,7 +47,7 @@ Pass absolute paths. When you state a fact from a PDF, give its page and block i
 4. Read what models this computer has before you suggest one:
 
    ```bash
-   npx okrapdf@0.18.0 model --json
+   npx okrapdf@0.18.1 model --json
    ```
 
    Do not guess a model id. Use an `id` from `models`. Local ids look like `ollama/qwen3-vl:4b`, and key-based ids look like `gemini/gemini-3-flash-preview`.
@@ -55,20 +55,20 @@ Pass absolute paths. When you state a fact from a PDF, give its page and block i
 5. When the person points at something in the dashboard, such as "this table" or "that number", read the selection. They select a block with its **Select** control, or with a click on a box in the PDF:
 
    ```bash
-   npx okrapdf@0.18.0 context
+   npx okrapdf@0.18.1 context
    ```
 
    If `selection` is `null`, ask them to click the box. Do not ask them for coordinates.
 
-With no file, `npx okrapdf@0.18.0` opens a drop zone with a sample document. `npx okrapdf@0.18.0 dashboard report.pdf` is the same command by name.
+With no file, `npx okrapdf@0.18.1` opens a drop zone with a sample document. `npx okrapdf@0.18.1 dashboard report.pdf` is the same command by name.
 
 ## Parse in the terminal
 
 Use this when the person wants the output and not the page. It starts no server.
 
 ```bash
-npx okrapdf@0.18.0 parse report.pdf --model ollama/qwen3-vl:4b --pages 1-3 --json
-npx okrapdf@0.18.0 parse report.pdf --model gemini/gemini-3-flash-preview --output report.md
+npx okrapdf@0.18.1 parse report.pdf --model ollama/qwen3-vl:4b --pages 1-3 --json
+npx okrapdf@0.18.1 parse report.pdf --model gemini/gemini-3-flash-preview --output report.md
 ```
 
 With no `--model`, it reads the text layer. A scan returns no text from the text layer, so a scan needs a vision model.
@@ -102,8 +102,8 @@ Keys come from `LLAMA_CLOUD_API_KEY`, `GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `OP
 Every model run uses the ParseBench `parse_with_layout` prompts word for word. To score a model, use the official evaluator. It needs [uv](https://docs.astral.sh/uv/).
 
 ```bash
-npx okrapdf@0.18.0 bench --model ollama/qwen3-vl:4b --json
-npx okrapdf@0.18.0 bench --model gemini/gemini-3-flash-preview --full
+npx okrapdf@0.18.1 bench --model ollama/qwen3-vl:4b --json
+npx okrapdf@0.18.1 bench --model gemini/gemini-3-flash-preview --full
 ```
 
 The bench takes prompt-based models, so it refuses a `llamaparse/` id. LlamaParse has published scores in the Bench tab.
@@ -120,7 +120,7 @@ When you report a score, state which run it came from:
 A background dashboard stops after 30 idle minutes. To stop it now:
 
 ```bash
-npx okrapdf@0.18.0 stop
+npx okrapdf@0.18.1 stop
 ```
 
 ## Rules

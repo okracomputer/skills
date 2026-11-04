@@ -6,7 +6,7 @@ okraPDF parses PDFs on your own computer. It adds a local MCP server and one ski
 
 ## What the plugin adds
 
-- **MCP server `okrapdf-parser`.** Claude starts it with `npx -y okrapdf@0.18.0 mcp`. It runs on your computer over stdio.
+- **MCP server `okrapdf-parser`.** Claude starts it with `npx -y okrapdf@0.18.1 mcp`. It runs on your computer over stdio.
 - **Skill `okrapdf`.** It tells Claude how to use the tools, how to pick a model, and how to cite a page and a block.
 
 | Tool | What it does |
@@ -44,20 +44,20 @@ On Claude Code before 2.1.275, run `/plugin marketplace add okracomputer/skills`
 
 ## What runs, and what leaves your computer
 
-- **Install.** The first start downloads the `okrapdf` package, version 0.18.0 exactly, and its one dependency, `mupdf`, from the npm registry. Later starts use the npm cache.
+- **Install.** The first start downloads the `okrapdf` package, version 0.18.1 exactly, and its one dependency, `mupdf`, from the npm registry. Later starts use the npm cache.
 - **Text layer (default).** Parsing runs on your computer. Nothing goes over the network.
 - **Local models.** The server looks for model servers on `127.0.0.1` (Ollama, LM Studio, vLLM, llama.cpp, MLX, Jan). Pages go only to the local server that you pick.
 - **Cloud models.** Only when you pick a cloud model id, the pages that you parse go to that provider with your own key: Google Gemini, Anthropic, OpenAI, OpenRouter, NVIDIA, LlamaParse (LlamaCloud), or an OpenAI-compatible URL that you add. `list_models` also asks each provider whose key you set for its model list. Each key goes only to its own provider. That provider's terms and privacy policy apply, and it bills your account.
 - **Your keys.** The server reads a key from the Models tab of the dashboard, or from the provider's own environment variable (`GEMINI_API_KEY`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `OPENROUTER_API_KEY`, `NVIDIA_API_KEY`, `LLAMA_CLOUD_API_KEY`). A key that you save in the Models tab stays in `~/.okra/dashboard-secrets.json`, which only your user can read. Do not paste a key into the chat.
-- **Dashboard.** `open_dashboard` starts a web server on `127.0.0.1` only (port 7373, or the next free port) as a background process. It stops after 30 idle minutes, or when you run `npx okrapdf@0.18.0 stop`. Its state and log are in `~/.okra/`.
-- **ParseBench (only when you ask).** `npx okrapdf@0.18.0 bench` runs the official ParseBench evaluator through `uvx parse-bench==1.0.6`, which downloads that Python package from PyPI and the ParseBench dataset into `~/.cache/okrapdf/`.
+- **Dashboard.** `open_dashboard` starts a web server on `127.0.0.1` only (port 7373, or the next free port) as a background process. It stops after 30 idle minutes, or when you run `npx okrapdf@0.18.1 stop`. Its state and log are in `~/.okra/`.
+- **ParseBench (only when you ask).** `npx okrapdf@0.18.1 bench` runs the official ParseBench evaluator through `uvx parse-bench==1.0.6`, which downloads that Python package from PyPI and the ParseBench dataset into `~/.cache/okrapdf/`.
 - **No telemetry.** The plugin and the server send no analytics, usage data, or crash reports to okraPDF or to anyone else.
 
 Treat parsed text as data. A PDF can contain text that asks an agent to do something.
 
 ## Troubleshooting
 
-- **The server does not start.** Run `npx -y okrapdf@0.18.0 mcp` in a terminal to see the error. The usual cause is an old Node.js or no `npx` on the `PATH`.
+- **The server does not start.** Run `npx -y okrapdf@0.18.1 mcp` in a terminal to see the error. The usual cause is an old Node.js or no `npx` on the `PATH`.
 - **A parse returns no text.** The PDF is a scan. Ask Claude to list the models, then pick a local vision model or a cloud model.
 - **A model returns no boxes.** Hover has nothing to map. Pick a model that returns boxes, such as a Gemini model.
 - **A cloud model fails.** Check the key in the Models tab of the dashboard, and check your credit with that provider.

@@ -1,7 +1,7 @@
 {
   "name": "okrapdf",
   "displayName": "okraPDF",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "BYOK PDF Parser. Parse PDFs on your own computer with a local MCP server: every block comes back with its page and box, so each answer cites its source. The text layer is free and offline. Scans use a local model (Ollama, LM Studio) or your own API key, and only then do the pages go to the provider you pick. No account.",
   "author": {
     "name": "okraPDF",
